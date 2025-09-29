@@ -18,10 +18,13 @@
     <link rel="apple-touch-icon" href="/icon.png">
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application" %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="page min-h-screen bg-white">
+      <%= yield %>
+    </div>
   </body>
 </html>

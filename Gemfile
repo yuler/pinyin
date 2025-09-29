@@ -5,7 +5,7 @@ ruby file: ".ruby-version"
 gem "rails", "~> 8.0.2", ">= 8.0.2.1"
 
 # Drivers
-# gem "sqlite3", ">= 2.1"
+gem "sqlite3", ">= 2.1"
 # gem "pg", "~> 1.5"
 
 # Deployment
@@ -19,6 +19,7 @@ gem "propshaft"
 gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
+gem "tailwindcss-rails"
 
 # Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
 gem "solid_cache"
@@ -34,6 +35,7 @@ gem "bcrypt", "~> 3.1.7"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "image_processing", "~> 1.2"
 gem "faraday"
+gem "mini_racer"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: false
