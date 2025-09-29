@@ -1,7 +1,5 @@
-# pinyin
+# copybook
 
-https://pinyin.yuler.cc
+> Calligraphy + Go
 
-# refs
-
-- https://www.nqez.com/
+https://copybook.yuler.cc
