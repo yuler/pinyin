@@ -1,0 +1,16 @@
+<div class="my-4 mx-auto max-w-6xl flex flex-col md:flex-row gap-4">
+  <!-- 田字格练习纸 -->
+  <div class="p-6 flex-1 rounded shadow">
+    <div class="flex flex-col">
+        <%= chinese_pinyin("nǐ") %>
+        <%= chinese_character("你") %>
+    </div>
+  </div>
+  
+  <div class="p-4 flex flex-col gap-4 rounded shadow">
+    <textarea class="textarea" placeholder="请输入字体" autofocus></textarea>
+    <button class="btn btn-neutral">
+        生成字贴
+    </button>
+  </div>
+</div>

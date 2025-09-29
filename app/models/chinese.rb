@@ -1,7 +1,9 @@
 class Chinese
   def self.to_pinyin(chinese_text)
     return chinese_text if chinese_text.nil? || chinese_text.empty?
-    runjs_pinyin_convert(chinese_text)
+    Rails.benchmark("Chinese.to_pinyin") do
+      runjs_pinyin_convert(chinese_text)
+    end
   end
 
   private_class_method def self.runjs_pinyin_convert(chinese_text)
