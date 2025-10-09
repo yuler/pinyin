@@ -1,16 +1,34 @@
-<div class="my-4 mx-auto max-w-6xl flex flex-col md:flex-row gap-4">
+<div class="my-10 mx-auto max-w-6xl flex flex-col md:flex-row gap-4">
   <!-- 田字格练习纸 -->
-  <div class="p-6 flex-1 rounded shadow">
-    <div class="flex flex-col">
-        <%= chinese_pinyin("nǐ") %>
-        <%= chinese_character("你") %>
+  <div class="flex-1 border border-gray-300 border-dashed shadow">
+    <div class="px-8 py-10 relative">
+      <div class="bg-grid absolute inset-0"></div>
+      <%= turbo_frame_tag @copy, loading: "lazy", data: { turbo_action: "advance" } do %>
+        <div class="flex">
+          <% @copy.characters.each do |pinyin, character| %>
+            <div class="flex flex-col w-15">
+              <%= chinese_pinyin(pinyin) %>
+              <%= chinese_character(character) %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
-  
+
   <div class="p-4 flex flex-col gap-4 rounded shadow">
-    <textarea class="textarea" placeholder="请输入字体" autofocus></textarea>
-    <button class="btn btn-neutral">
+    <%= form_with model: @copy, url: new_copy_path, method: :get, data: { turbo_frame: dom_id(@copy) } do |f| %>
+      <%= f.textarea :chinese, class: "textarea", placeholder: "请输入字体", autofocus: true %>
+      <button class="btn btn-neutral mt-4">
         生成字贴
-    </button>
+      </button>
+    <% end %>
   </div>
 </div>
+
+<style>
+.bg-grid {
+  background-size: 20px 20px;
+  background-image: repeating-linear-gradient(-45deg,var(--color-base-100),var(--color-base-100)13px,var(--color-base-200)13px,var(--color-base-200)14px);
+}
+</style>
