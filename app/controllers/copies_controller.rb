@@ -2,10 +2,14 @@ class CopiesController < ApplicationController
     def new
         @copy = Copy.new(copy_params)
         @copy.chinese = @copy.chinese.to_s.strip
-        pinyin = Chinese.to_pinyin(@copy.chinese)
+        pinyin_string = Chinese.to_pinyin(@copy.chinese).scan(/\S+| {2,}/)
+        # Split by single space, but preserve multiple spaces (2+) as array elements
+        pinyins = pinyin_string
         chars = @copy.chinese.chars
-        @copy.characters = pinyin.split(" ").map.with_index do |pinyin, index|
-            [ pinyin, chars[index] ]
+        puts pinyins.inspect
+        puts chars.inspect
+        @copy.characters = chars.map.with_index do |char, index|
+            [ pinyins[index], char ]
         end
       # respond_to do |format|
       #     format.html
