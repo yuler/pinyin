@@ -6,8 +6,3 @@ https://copybook.yuler.cc
 
 - [ruby on rails](https://rubyonrails.org/)
 - [daisyUI](https://daisyui.com/)
-
-## refs
-
-- https://z2h.cn/hanzi
-- https://github.com/chanind/hanzi-writer
