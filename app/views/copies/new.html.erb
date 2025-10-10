@@ -8,7 +8,11 @@
           <% @copy.characters.each do |pinyin, character| %>
             <div class="flex flex-col w-15">
               <%= chinese_pinyin(pinyin) %>
-              <%= chinese_character(character) %>
+              <% if @copy.hidden_character %>
+                <%= chinese_character %>
+              <% else %>
+                <%= chinese_character(character) %>
+              <% end %>
             </div>
           <% end %>
         </div>
@@ -19,6 +23,10 @@
   <div class="p-4 flex flex-col gap-4 rounded shadow print:hidden">
     <%= form_with model: @copy, url: new_copy_path, method: :get, data: { turbo_frame: dom_id(@copy) } do |f| %>
       <%= f.textarea :chinese, class: "textarea", rows: 10, autofocus: true, placeholder: "请输入字体" %>
+      <div class="mt-4 flex items-center justify-between">
+        <%= f.label :hidden_character, "隐藏文字" %>
+        <%= f.check_box :hidden_character, class: "toggle" %>
+      </div>
       <button class="btn btn-neutral mt-4">
         生成字贴
       </button>
