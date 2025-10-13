@@ -1,7 +1,7 @@
 class Chinese
   def self.to_pinyin(chars)
     return chars if chars.nil? || chars.empty?
-    Rails.benchmark("Chinese.to_pinyin") do
+    Rails.benchmark("chinese#to_pinyin") do
       runjs_pinyin_convert(chars)
     end
   end

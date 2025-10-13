@@ -1,11 +1,12 @@
-<div class="my-10 px-4 mx-auto max-w-6xl flex flex-col-reverse md:flex-row gap-4">
+<div class="my-10 px-4 mx-auto max-w-6xl flex flex-col-reverse md:flex-row gap-4 print:invisible">
   <!-- 田字格练习纸 -->
   <%# A4: 210 x 297 %>
   <div class="h-[50vh] md:h-auto border border-gray-300 border-dashed shadow overflow-auto">
-    <div class="papper py-4 md:p-6 relative flex justify-center">
-      <div class="papper__mask absolute inset-0 z-0"></div>
+    <%# TODO: fix the printed page layout %>
+    <div class="papper py-4 md:p-6 relative flex justify-center print:w-full!  print:visible! print:fixed! print:inset-0!">
+      <div class="papper__mask absolute inset-0 -z-1"></div>
       <%= turbo_frame_tag @copy, loading: "lazy", data: { turbo_action: "advance" } do %>
-        <div class="grid grid-cols-12">
+        <div class="grid grid-cols-12 bg-white">
           <% @copy.characters.each do |pinyin, character| %>
             <div class="flex flex-col w-15">
               <%= chinese_pinyin(pinyin) %>
