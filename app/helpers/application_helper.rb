@@ -9,7 +9,7 @@ module ApplicationHelper
         <line x1='1' y1='15' x2='99' y2='15' stroke='#000' stroke-width='1' stroke-dasharray='3,3'/>
         <line x1='1' y1='30' x2='99' y2='30' stroke='#000' stroke-width='1' stroke-dasharray='3,3'/>
       </svg>
-      <span class='absolute inset-0 mt-[1px] flex justify-center'>#{pinyin}</span>
+      <span class='absolute inset-0 mt-[1px] flex justify-center text-[var(--app-color-papper-pinyin,red)]'>#{pinyin}</span>
     </div>
     ".html_safe
   end
