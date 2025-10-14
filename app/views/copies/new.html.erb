@@ -2,7 +2,6 @@
   <!-- 田字格练习纸 -->
   <%# A4: 210 x 297 %>
   <div class="h-[50vh] md:h-auto border border-gray-300 border-dashed shadow overflow-auto">
-    <%# TODO: fix the printed page layout %>
     <div class="papper py-4 md:p-6 relative flex justify-center">
       <div class="papper__mask absolute inset-0 -z-1"></div>
       <%= turbo_frame_tag "#{dom_id(@copy)}_characters", data: { turbo_action: "advance" } do %>
@@ -18,9 +17,16 @@
         <%= f.label :hidden_character, "隐藏文字" %>
         <%= f.check_box :hidden_character, class: "toggle" %>
       </div>
-      <button class="btn btn-neutral mt-4">
-        生成字贴
-      </button>
+
+      <div class="mt-4 flex items-center justify-between">
+        <button class="btn btn-neutral mt-4">
+          生成字贴
+        </button>
+        <button class="btn mt-4" onclick="window.print()">
+        <%= image_tag "printer.svg", size: 20 %>
+          打印
+        </button>
+      </div>
     <% end %>
   </div>
 </div>
