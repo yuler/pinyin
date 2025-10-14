@@ -1,15 +1,15 @@
 class CopiesController < ApplicationController
     def new
         @copy = Copy.new(copy_params)
-        @copy.chinese = @copy.chinese.to_s.strip
-        # TODO: fix this
-        @copy.hidden_character = @copy.hidden_character == "1" || @copy.hidden_character == true
-        pinyin_string = Chinese.to_pinyin(@copy.chinese).scan(/\S+| {2,}/)
+        chinese_normalized = @copy.chinese.to_s.gsub(/\s+/, " ").strip
+        pinyin_string = Chinese.to_pinyin(chinese_normalized).scan(/\S+| {2,}/)
         # Split by single space, but preserve multiple spaces (2+) as array elements
         pinyins = pinyin_string
-        chars = @copy.chinese.chars
-        @copy.characters = chars.map.with_index do |char, index|
-            [ pinyins[index], char ]
+        chars = chinese_normalized.chars
+        @copy.characters = pinyins.zip(chars)
+        respond_to do |format|
+            format.html
+            format.turbo_stream
         end
     end
 
@@ -26,6 +26,8 @@ class CopiesController < ApplicationController
 
 
     def copy_params
-        params.fetch(:copy, {}).permit(:chinese, :hidden_character)
+        params.fetch(:copy, {}).permit(:chinese, :hidden_character).tap do |permit|
+            permit[:hidden_character] = permit[:hidden_character].in?(%w[1 true yes on])
+        end
     end
 end

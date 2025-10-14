@@ -1,0 +1,12 @@
+<div class="grid grid-cols-12 bg-white z-10">
+    <% copy.characters.each do |pinyin, character| %>
+        <div class="flex flex-col w-15">
+            <%= chinese_pinyin(pinyin) %>
+            <% if copy.hidden_character %>
+                <%= chinese_character %>
+            <% else %>
+                <%= chinese_character(character) %>
+            <% end %>
+        </div>
+    <% end %>
+</div>

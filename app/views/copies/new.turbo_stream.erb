@@ -1,10 +1,7 @@
-<%= turbo_stream.update "characters" do %>
-  <div class="flex">
-    <%= @copy.chinese_character_grid.each do |pinyin, character| %>
-      <div class="flex flex-col w-15">
-        <%= chinese_pinyin(pinyin) %>
-        <%= chinese_character(character) %>
-      </div>
-    <% end %>
-  </div>
+<%= turbo_stream.update "#{dom_id(@copy)}_characters" do %>
+  <%= render "characters", copy: @copy %>
+<% end %>
+
+<%= turbo_stream.update "#{dom_id(@copy)}_characters_print" do %>
+  <%= render "characters", copy: @copy %>
 <% end %>
