@@ -32,7 +32,7 @@
 </div>
 
 <div class="hidden print:flex py-4 relative justify-center">
-    <%= turbo_frame_tag "#{dom_id(@copy)}_characters_print", loading: "lazy" do %>
+    <%= turbo_frame_tag "#{dom_id(@copy)}_characters_print" do %>
       <%= render "characters", copy: @copy %>
     <% end %>
   </div>
