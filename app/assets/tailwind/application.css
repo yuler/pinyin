@@ -7,6 +7,7 @@
 
 @plugin "./daisyui.mjs"{
   themes: light --default;
+  exclude: properties;
 }
 
 /* Optional for custom themes – Docs: https://daisyui.com/docs/themes/#how-to-add-a-new-custom-theme */
