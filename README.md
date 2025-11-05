@@ -1,6 +1,6 @@
 # copybook
 
-https://copybook.yuler.cc
+> A simple online tool for generate copybook. https://copybook.yuler.cc
 
 ## Tech Stacks
 
