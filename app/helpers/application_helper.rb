@@ -25,8 +25,12 @@ module ApplicationHelper
         <!-- 水平虚线 -->
         <line x1='0' y1='50' x2='100' y2='50' stroke='#000' stroke-width='1' stroke-dasharray='3,3'/>
       </svg>
-      <span class='absolute inset-0 p-1 flex items-center justify-center text-3xl'>#{character}</span>
+      <span class='absolute inset-0 p-1 flex items-center justify-center text-3xl text-[var(--app-color-papper-character,#ccc)]'>#{character}</span>
     </div>
     ".html_safe
+  end
+
+  def chinese_empty_character
+    chinese_character
   end
 end

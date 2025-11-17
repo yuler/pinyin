@@ -1,10 +1,10 @@
-<div class="my-10 px-4 mx-auto max-w-6xl flex flex-col-reverse md:flex-row gap-4 print:hidden">
+<div class="my-10 px-4 mx-auto max-w-6xl flex flex-col-reverse lg:flex-row gap-4 print:hidden">
   <!-- 田字格练习纸 -->
-  <%# A4: 210 x 297 %>
-  <div class="h-[50vh] md:h-auto border border-gray-300 border-dashed shadow overflow-auto">
-    <div class="papper py-4 md:p-6 relative flex justify-center">
+  <div class="h-[50vh] lg:h-auto border border-gray-300 border-dashed shadow overflow-auto">
+    <%# A4: 210 x 297 %>
+    <div class="papper py-4 lg:p-6 relative flex justify-center">
       <div class="papper__mask absolute inset-0 -z-1"></div>
-      <%= turbo_frame_tag "#{dom_id(@copy)}_characters", data: { turbo_action: "advance" } do %>
+      <%= turbo_frame_tag "#{dom_id(@copy)}_characters", data: { turbo_action: "replace", } do %>
         <%= render "characters", copy: @copy %>
       <% end %>
     </div>
@@ -32,10 +32,9 @@
 </div>
 
 <div class="hidden print:flex py-4 relative justify-center">
-    <%= turbo_frame_tag "#{dom_id(@copy)}_characters_print" do %>
-      <%= render "characters", copy: @copy %>
-    <% end %>
-  </div>
+  <%= turbo_frame_tag "#{dom_id(@copy)}_characters_print" do %>
+    <%= render "characters", copy: @copy %>
+  <% end %>
 </div>
 
 <style>
