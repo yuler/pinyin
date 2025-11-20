@@ -11,5 +11,6 @@ Rails.application.routes.draw do
 
   resources :copies
   # Defines the root path route ("/")
-  root "copies#new"
+  # root "copies#new"
+  root "home#index"
 end
