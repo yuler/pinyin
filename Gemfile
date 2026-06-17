@@ -31,7 +31,7 @@ gem "solid_cable"
 
 # Other
 gem "jbuilder"
-gem "bcrypt", "~> 3.1.7"
+gem "bcrypt", "~> 3.1.21"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "image_processing", "~> 1.2"
 gem "faraday"
